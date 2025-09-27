@@ -20,14 +20,14 @@ def getTheoreticalValue():
         if r*k>M:
             probability_Sa = 0
         else:
-            prob_S1_j = []
-            for j in range(0, M+1):
-                sum_lower_a = sum((lmbda_a * a)**m / math.factorial(m) for m in range(j+1))
-                sum_lower_b = sum((lmbda_a * b)**m / math.factorial(m) for m in range(j+1))
-                prob_j = (sum_lower_a * math.exp(-lmbda_a * a) - sum_lower_b * math.exp(-lmbda_a * b)) / ((b - a) * lmbda_a)
-                prob_S1_j.append(prob_j)
+            probability_Sa_j = []
+            for j in range(r*k, M+1):
+                sum_lim_a = sum((lmbda_a * a)**m / math.factorial(m) for m in range(j+1))
+                sum_lim_b = sum((lmbda_a * b)**m / math.factorial(m) for m in range(j+1))
+                prob_j = (sum_lim_a * math.exp(-lmbda_a * a) - sum_lim_b * math.exp(-lmbda_a * b)) / ((b - a) * lmbda_a)
+                probability_Sa_j.append(prob_j)
 
-            probability_Sa = sum(prob_S1_j[r*k:])
+            probability_Sa = sum(probability_Sa_j)
 
         sumatory += probability_Sb*probability_Sa
 
